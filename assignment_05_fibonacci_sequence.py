@@ -67,10 +67,10 @@ def is_fibonacci(number):
 
 def main():
     n = int(input("How many terms? "))
-    print_fibonacci(n)          # now correctly defined
+    print_fibonacci(n)          
 
     number = int(input("Enter a number to check: "))
-    if is_fibonacci(number):    # now correctly defined
+    if is_fibonacci(number):   
         print(f"{number} is a Fibonacci number.")
     else:
         print(f"{number} is NOT a Fibonacci number.")
