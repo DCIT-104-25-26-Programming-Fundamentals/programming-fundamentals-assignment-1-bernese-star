@@ -59,4 +59,71 @@
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
+def read_matrix(name=""):
+    rows = int(input(f"Enter number of rows{name}: "))
+    cols = int(input(f"Enter number of columns{name}: "))
+    matrix = []
+    for i in range(rows):
+        row = input(f"Enter row {i + 1}: ").split()
+        row = [int(num) for num in row]
+        matrix.append(row)
+    return matrix
+def print_matrix(matrix):
+    for row in matrix:
+        print("  ".join(str(num) for num in row))
+def transpose(matrix):
+    rows = len(matrix)
+    cols = len(matrix[0])
+    result = [[0] * rows for _ in range(cols)]
 
+    for i in range(rows):
+        for j in range(cols):
+            result[j][i] = matrix[i][j]
+    return result
+
+def add_matrices(a, b):
+    rows = len(a)
+    cols = len(a[0])
+    result = [[0] * cols for _ in range(rows)]
+
+    for i in range(rows):
+        for j in range(cols):
+            result[i][j] = a[i][j] + b[i][j]
+    return result
+
+def multiply_matrices(a, b):
+    rows_a = len(a)
+    cols_a = len(a[0])
+    cols_b = len(b[0])
+    result = [[0] * cols_b for _ in range(rows_a)]
+
+    for i in range(rows_a):
+        for j in range(cols_b):
+            total = 0
+            for k in range(cols_a):
+                total += a[i][k] * b[k][j]
+            result[i][j] = total
+    return result
+
+def main():
+    print("Part A: Transpose")
+    matrix = read_matrix()
+    print("Original Matrix:")
+    print_matrix(matrix)
+    print("Transposed Matrix:")
+    print_matrix(transpose(matrix))
+
+    print("\nPart B: Add Two Matrices")
+    a = read_matrix(" for Matrix A")
+    b = read_matrix(" for Matrix B")
+    print("Sum:")
+    print_matrix(add_matrices(a, b))
+
+    print("\nPart C: Multiply Two Matrices")
+    a = read_matrix(" for Matrix A")
+    b = read_matrix(" for Matrix B")
+    print("Product:")
+    print_matrix(multiply_matrices(a, b))
+
+if __name__ == "__main__":
+    main()
