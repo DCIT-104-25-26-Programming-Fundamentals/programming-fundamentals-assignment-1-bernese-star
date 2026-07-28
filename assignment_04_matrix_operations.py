@@ -124,6 +124,5 @@ def main():
     b = read_matrix(" for Matrix B")
     print("Product:")
     print_matrix(multiply_matrices(a, b))
-
-if __name__ == "__main__":
+    
     main()
